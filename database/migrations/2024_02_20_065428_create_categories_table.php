@@ -16,10 +16,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('image');
-            $table->integer('create_by');
-            $table->integer('update_by')->nullable();
-            $table->integer('delete_by')->nullable();
+            $table->uuid('create_by')->index()->nullable();
+            $table->uuid('update_by')->index()->nullable();
+            $table->uuid('delete_by')->index()->nullable();
             $table->timestamps();
+
+            // Relations
+            $table->foreign('create_by')->references('id')->on('users');
+            $table->foreign('update_by')->references('id')->on('users');
+            $table->foreign('delete_by')->references('id')->on('users');
         });
     }
 

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -46,4 +48,7 @@ Route::group(['middleware' => ['web', 'auth', 'verified']], function () {
     Route::resource('menu.item', MenuItemController::class)->only('index', 'store', 'update', 'destroy');
 
     Route::resource('pelatihan', PelatihanController::class)->only('index');
+
+    Route::resource('category', CategoryController::class);
+    Route::resource('article', ArticleController::class);
 });

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('article_category', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('article_id'); // Menggunakan unsignedBigInteger() untuk tipe kolom
-            $table->unsignedBigInteger('category_id'); // Menggunakan unsignedBigInteger() untuk tipe kolom
+            $table->bigInteger('article_id')->unsigned();
+            $table->bigInteger('category_id')->unsigned();
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade'); // Menambahkan onDelete('cascade') untuk menghapus kategori yang terkait ketika artikel dihapus
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade'); // Menambahkan onDelete('cascade') untuk menghapus artikel yang terkait ketika kategori dihapus
             $table->timestamps();
