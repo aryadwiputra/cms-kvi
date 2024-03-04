@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RouteController;
@@ -51,4 +52,5 @@ Route::group(['middleware' => ['web', 'auth', 'verified']], function () {
 
     Route::resource('category', CategoryController::class);
     Route::resource('article', ArticleController::class);
+    Route::resource('destination', DestinationController::class);
 });
